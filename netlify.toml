@@ -3,7 +3,7 @@
   publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "16"
   NPM_FLAGS = "--legacy-peer-deps"
 
 [[plugins]]
@@ -13,3 +13,4 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
