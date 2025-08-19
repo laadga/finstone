@@ -1,0 +1,352 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #e9e4dc;
+    --foreground: #2a2a2a;
+    --card: #f5f2ed;
+    --card-foreground: #2a2a2a;
+    --popover: #f5f2ed;
+    --popover-foreground: #2a2a2a;
+    --primary: #2a2a2a;
+    --primary-foreground: #e9e4dc;
+    --secondary: #ede9e1;
+    --secondary-foreground: #2a2a2a;
+    --muted: #ede9e1;
+    --muted-foreground: #6b6b6b;
+    --accent: #e5e0d8;
+    --accent-foreground: #2a2a2a;
+    --destructive: #dc2626;
+    --destructive-foreground: #ffffff;
+    --border: #d8d3cb;
+    --input: #d8d3cb;
+    --ring: #2a2a2a;
+    --radius: 0.5rem;
+  }
+
+
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply transition-colors duration-300;
+    scroll-behavior: smooth;
+  }
+  
+  body.light {
+    background-color: #e9e4dc;
+    color: #2a2a2a;
+  }
+  
+
+  
+
+  
+  /* Ensure WavyBackground is properly positioned */
+  .absolute.inset-0.-z-10 {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    z-index: -10 !important;
+  }
+  
+  /* Smoky background effect */
+  main {
+    background: radial-gradient(ellipse at center, #f5f2ed 0%, #e9e4dc 50%, #e0dbd3 100%);
+    min-height: 100vh;
+  }
+  
+  /* Add smoky overlay to sections */
+  section {
+    position: relative;
+  }
+  
+  section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(245, 242, 237, 0.1) 0%, rgba(233, 228, 220, 0.05) 100%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  /* Dynamic navigation - handled by component */
+  /* Force override any inherited background styles */
+  nav[data-scrolled="false"] {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    background-clip: border-box !important;
+    background-origin: border-box !important;
+  }
+  
+  nav[data-scrolled="true"] {
+    background: rgba(229, 228, 220, 0.6) !important;
+    background-color: rgba(229, 228, 220, 0.6) !important;
+  }
+  
+  /* Override any potential Tailwind classes */
+  nav.bg-gray-200\/60 {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+  
+  /* Use CSS custom properties */
+  nav {
+    background: var(--nav-bg, transparent) !important;
+    background-color: var(--nav-bg, transparent) !important;
+  }
+}
+
+
+
+
+
+
+
+
+ 
+@layer base {
+  html {
+    font-feature-settings: "rlig" 1, "calt" 1;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+    .animate-spotlight {
+    animation: spotlight 2s ease .75s 1 forwards;
+  }
+  
+  @keyframes spotlight {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+  
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+  
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* Animation for the pulsing effect */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Animation for the ping effect */
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Custom animations for the orbital timeline */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+/* Rainbow animation for the feature section */
+:root {
+  --color-1: 0 100% 63%;
+  --color-2: 270 100% 63%;
+  --color-3: 210 100% 63%;
+  --color-4: 195 100% 63%;
+  --color-5: 90 100% 63%;
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-rainbow {
+  animation: rainbow 3s ease infinite;
+}
+
+.duration-700 {
+  transition-duration: 700ms;
+}
+
+.duration-1000 {
+  transition-duration: 1000ms;
+}
+
+/* Backdrop blur */
+.backdrop-blur-lg {
+  backdrop-filter: blur(16px);
+}
+
+/* Custom gradients */
+.bg-gradient-orbital {
+  background: linear-gradient(to bottom right, #6366f1, #3b82f6, #14b8a6);
+}
+
+/* Z-index utilities */
+.z-10 {
+  z-index: 10;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+/* Custom shadows */
+.shadow-orbital {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Custom transforms */
+.scale-125 {
+  transform: scale(1.25);
+}
+
+.scale-150 {
+  transform: scale(1.5);
+}
+
+/* Custom opacity values */
+.opacity-70 {
+  opacity: 0.7;
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+/* Custom border opacity */
+.border-white\/10 {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.border-white\/20 {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.border-white\/30 {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.border-white\/40 {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Custom background opacity */
+.bg-black\/90 {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.bg-white\/50 {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.bg-white\/80 {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Custom text opacity */
+.text-white\/70 {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.text-white\/80 {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Database animation styles */
+.database {
+  offset-anchor: 10px 0px;
+  animation: database-animation-path;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  animation-duration: 4s;
+  animation-delay: 1s;
+}
+
+.db-light-1 {
+  offset-path: path("M 31 10 v 15 q 0 5 5 5 h 59 q 5 0 5 5 v 25");
+}
+
+.db-light-2 {
+  offset-path: path("M 77 10 v 10 q 0 5 5 5 h 13 q 5 0 5 5 v 25");
+}
+
+.db-light-3 {
+  offset-path: path("M 124 10 v 10 q 0 5 -5 5 h -14 q -5 0 -5 5 v 25");
+}
+
+.db-light-4 {
+  offset-path: path("M 170 10 v 15 q 0 5 -5 5 h -60 q -5 0 -5 5 v 25");
+}
+
+@keyframes database-animation-path {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
