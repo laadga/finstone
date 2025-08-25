@@ -1,3 +1,55 @@
+// Mobile zoom prevention and viewport control
+(function() {
+    // Prevent zoom-out on mobile devices
+    let viewport = document.querySelector('meta[name=viewport]');
+    if (!viewport) {
+        viewport = document.createElement('meta');
+        viewport.name = 'viewport';
+        document.head.appendChild(viewport);
+    }
+    
+    // Set viewport to prevent zoom-out
+    viewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover';
+    
+    // Additional mobile constraints
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        // Prevent double-tap zoom
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+        
+        // Prevent pinch zoom
+        document.addEventListener('gesturestart', function (e) {
+            e.preventDefault();
+        });
+        
+        document.addEventListener('gesturechange', function (e) {
+            e.preventDefault();
+        });
+        
+        document.addEventListener('gestureend', function (e) {
+            e.preventDefault();
+        });
+    }
+    
+    // Force viewport width on resize
+    function setViewportWidth() {
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        document.documentElement.style.setProperty('--vw', `${vw}px`);
+        document.body.style.width = `${vw}px`;
+        document.body.style.maxWidth = `${vw}px`;
+    }
+    
+    window.addEventListener('resize', setViewportWidth);
+    window.addEventListener('orientationchange', setViewportWidth);
+    setViewportWidth();
+})();
+
 // DOM Elements
 const header = document.getElementById('header');
 const navToggle = document.getElementById('nav-toggle');
