@@ -263,7 +263,8 @@ export default function Home() {
 
 
         {/* Testimonials Section */}
-        <section id="testimonials" className="py-20 relative z-10">
+        {/* Testimonials Section - Hidden on Mobile */}
+        <section id="testimonials" className="py-20 relative z-10 hidden md:block">
           <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-2">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 drop-shadow-lg">
