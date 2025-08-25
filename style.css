@@ -71,7 +71,7 @@ body {
         transition: none !important;
     }
     
-    /* Hide any sections with testimonial-like content */
+    /* Hide any sections containing testimonials */
     section:has([class*="testimonial"]), 
     section:has([id*="testimonial"]),
     section:has([class*="review"]), 
@@ -107,7 +107,7 @@ body {
         transition: none !important;
     }
     
-    /* Hide any divs with testimonial-like content */
+    /* Hide any divs containing testimonials */
     div:has([class*="testimonial"]), 
     div:has([id*="testimonial"]),
     div:has([class*="review"]), 
@@ -128,6 +128,28 @@ body {
     div:has([id*="scroll"]),
     div:has([class*="move"]), 
     div:has([id*="move"]) {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    /* Hide any elements with text content that mentions testimonials */
+    *:contains("Real Results from Real Businesses"),
+    *:contains("testimonial"),
+    *:contains("review"),
+    *:contains("feedback"),
+    *:contains("quote"),
+    *:contains("client") {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
