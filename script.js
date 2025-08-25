@@ -35,19 +35,74 @@
         document.addEventListener('gestureend', function (e) {
             e.preventDefault();
         });
+        
+        // Prevent wheel zoom
+        document.addEventListener('wheel', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        // Prevent keyboard zoom
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '=')) {
+                e.preventDefault();
+            }
+        });
     }
     
-    // Force viewport width on resize
+    // Force viewport width on resize and continuously monitor
     function setViewportWidth() {
         const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
         document.documentElement.style.setProperty('--vw', `${vw}px`);
         document.body.style.width = `${vw}px`;
         document.body.style.maxWidth = `${vw}px`;
+        document.body.style.overflowX = 'hidden';
+        document.documentElement.style.overflowX = 'hidden';
+        
+        // Force all major containers
+        const containers = document.querySelectorAll('.hero, .section, .footer, .header, .container');
+        containers.forEach(container => {
+            container.style.width = '100%';
+            container.style.maxWidth = '100%';
+            container.style.overflowX = 'hidden';
+        });
+    }
+    
+    // Monitor viewport continuously
+    function monitorViewport() {
+        const currentWidth = window.innerWidth;
+        const currentHeight = window.innerHeight;
+        
+        // If viewport changes unexpectedly, force it back
+        if (document.documentElement.clientWidth !== currentWidth) {
+            setViewportWidth();
+        }
+        
+        // Prevent horizontal scroll
+        if (window.scrollX !== 0) {
+            window.scrollTo(0, window.scrollY);
+        }
+        
+        // Force body constraints
+        document.body.style.width = `${currentWidth}px`;
+        document.body.style.maxWidth = `${currentWidth}px`;
+        document.body.style.overflowX = 'hidden';
     }
     
     window.addEventListener('resize', setViewportWidth);
     window.addEventListener('orientationchange', setViewportWidth);
+    window.addEventListener('scroll', monitorViewport);
+    
+    // Set initial viewport and start monitoring
     setViewportWidth();
+    
+    // Continuous monitoring
+    setInterval(monitorViewport, 100);
+    
+    // Force viewport on page load
+    window.addEventListener('load', setViewportWidth);
+    window.addEventListener('DOMContentLoaded', setViewportWidth);
 })();
 
 // DOM Elements
