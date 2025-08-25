@@ -88,6 +88,43 @@
         document.body.style.width = `${currentWidth}px`;
         document.body.style.maxWidth = `${currentWidth}px`;
         document.body.style.overflowX = 'hidden';
+        
+        // NUCLEAR: Force ALL elements to fit viewport
+        const allElements = document.querySelectorAll('*');
+        allElements.forEach(element => {
+            // Force max-width on all elements
+            element.style.maxWidth = `${currentWidth}px`;
+            element.style.overflowX = 'hidden';
+            
+            // Force any elements with specific widths to fit
+            const computedStyle = window.getComputedStyle(element);
+            if (computedStyle.width !== 'auto' && computedStyle.width !== '100%') {
+                element.style.width = '100%';
+            }
+            
+            // Force any elements with absolute positioning to stay in bounds
+            if (computedStyle.position === 'absolute' || computedStyle.position === 'fixed') {
+                element.style.maxWidth = `${currentWidth}px`;
+                element.style.overflowX = 'hidden';
+            }
+        });
+        
+        // Force specific problematic elements
+        const containers = document.querySelectorAll('.hero, .section, .footer, .header, .container, .grid, .flex');
+        containers.forEach(container => {
+            container.style.width = '100%';
+            container.style.maxWidth = `${currentWidth}px`;
+            container.style.overflowX = 'hidden';
+        });
+        
+        // Force text elements to wrap
+        const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, div');
+        textElements.forEach(element => {
+            element.style.maxWidth = `${currentWidth}px`;
+            element.style.overflowX = 'hidden';
+            element.style.wordWrap = 'break-word';
+            element.style.overflowWrap = 'break-word';
+        });
     }
     
     window.addEventListener('resize', setViewportWidth);
