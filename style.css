@@ -164,6 +164,76 @@ body {
         animation: none !important;
         transition: none !important;
     }
+    
+    /* NUCLEAR: Hide specific testimonial content by targeting text patterns */
+    h1:contains("Real Results"),
+    h2:contains("Real Results"),
+    h3:contains("Real Results"),
+    h4:contains("Real Results"),
+    h5:contains("Real Results"),
+    h6:contains("Real Results"),
+    p:contains("Real Results"),
+    div:contains("Real Results"),
+    span:contains("Real Results"),
+    section:contains("Real Results"),
+    article:contains("Real Results") {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    /* Hide any elements containing specific testimonial text */
+    *:contains("David, Finance Manager"),
+    *:contains("Sofia, Chief Operations Officer"),
+    *:contains("$85K+ Average cash leaks recovered"),
+    *:contains("4.4x Average Return"),
+    *:contains("Before the audit, we had no visibility"),
+    *:contains("The audit identified 3 low-margin contracts") {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    /* Hide any parent containers of testimonial text */
+    div:has(*:contains("Real Results")),
+    section:has(*:contains("Real Results")),
+    article:has(*:contains("Real Results")),
+    main:has(*:contains("Real Results")),
+    body:has(*:contains("Real Results")) {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
 }
 
 /* White overlay for text readability */
