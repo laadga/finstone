@@ -420,7 +420,7 @@ function logPerformanceMetrics() {
             setTimeout(() => {
                 const perfData = performance.getEntriesByType('navigation')[0];
                 console.log('Page Load Time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
-                console.log('DOM Content Loaded:', perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart, 'ms');
+                console.log('DOM Content Loaded:', perfData.domContentLoadedEventStart - perfData.domContentLoadedEventStart, 'ms');
             }, 0);
         });
     }
