@@ -118,8 +118,8 @@
         });
         
         // Force text elements to wrap
-        const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, div');
-        textElements.forEach(element => {
+        const generalTextElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, div');
+        generalTextElements.forEach(element => {
             element.style.maxWidth = `${currentWidth}px`;
             element.style.overflowX = 'hidden';
             element.style.wordWrap = 'break-word';
@@ -138,8 +138,8 @@
         });
         
         // Force any grid or flex containers to single column
-        const gridElements = document.querySelectorAll('.grid, [class*="grid"], [class*="flex"]');
-        gridElements.forEach(element => {
+        const generalGridElements = document.querySelectorAll('.grid, [class*="grid"], [class*="flex"]');
+        generalGridElements.forEach(element => {
             element.style.display = 'block';
             element.style.width = '100%';
             element.style.maxWidth = `${currentWidth}px`;
@@ -149,8 +149,8 @@
         });
         
         // Force grid/flex items to full width
-        const gridItems = document.querySelectorAll('.grid > *, [class*="grid"] > *, [class*="flex"] > *');
-        gridItems.forEach(item => {
+        const generalGridItems = document.querySelectorAll('.grid > *, [class*="grid"] > *, [class*="flex"] > *');
+        generalGridItems.forEach(item => {
             item.style.width = '100%';
             item.style.maxWidth = `${currentWidth}px`;
             item.style.overflowX = 'hidden';
@@ -234,6 +234,272 @@
                 parent.style.overflowX = 'hidden';
                 parent.style.position = 'relative';
             }
+        });
+        
+        // NUCLEAR: Force ALL specific grid layouts to fit viewport exactly
+        const specificGrids = document.querySelectorAll('.credibility-grid, .pain-grid, .deliverables-grid, .benefits-grid, .process-timeline, .usp-content');
+        specificGrids.forEach(grid => {
+            grid.style.width = '100%';
+            grid.style.maxWidth = `${currentWidth}px`;
+            grid.style.overflowX = 'hidden';
+            grid.style.display = 'block';
+            grid.style.gridTemplateColumns = '1fr';
+            grid.style.gridTemplateRows = 'auto';
+            grid.style.gridGap = '1rem';
+            grid.style.margin = '0';
+            grid.style.padding = '0 1rem';
+            grid.style.boxSizing = 'border-box';
+        });
+        
+        // Force ALL grid items to full width
+        const gridItems = document.querySelectorAll('.credibility-grid > *, .pain-grid > *, .deliverables-grid > *, .benefits-grid > *, .process-timeline > *, .usp-content > *');
+        gridItems.forEach(item => {
+            item.style.width = '100%';
+            item.style.maxWidth = `${currentWidth}px`;
+            item.style.overflowX = 'hidden';
+            item.style.display = 'block';
+            item.style.float = 'none';
+            item.style.position = 'relative';
+            item.style.transform = 'none';
+            item.style.margin = '0 0 1rem 0';
+            item.style.padding = '1rem';
+            item.style.boxSizing = 'border-box';
+        });
+        
+        // Force flex containers to single column
+        const flexContainers = document.querySelectorAll('.usp-content, .cta-content, .guarantee-content, .footer-content');
+        flexContainers.forEach(container => {
+            container.style.width = '100%';
+            container.style.maxWidth = `${currentWidth}px`;
+            container.style.overflowX = 'hidden';
+            container.style.display = 'block';
+            container.style.flexDirection = 'column';
+            container.style.flexWrap = 'nowrap';
+        });
+        
+        // Force flex items to full width
+        const flexItems = document.querySelectorAll('.usp-content > *, .cta-content > *, .guarantee-content > *, .footer-content > *');
+        flexItems.forEach(item => {
+            item.style.width = '100%';
+            item.style.maxWidth = `${currentWidth}px`;
+            item.style.overflowX = 'hidden';
+            item.style.display = 'block';
+            item.style.flex = 'none';
+            item.style.margin = '0 0 1rem 0';
+            item.style.padding = '1rem';
+            item.style.boxSizing = 'border-box';
+        });
+        
+        // Force before-after layouts to fit
+        const beforeAfterLayouts = document.querySelectorAll('.before-after, .transform-graphic');
+        beforeAfterLayouts.forEach(layout => {
+            layout.style.width = '100%';
+            layout.style.maxWidth = `${currentWidth}px`;
+            layout.style.overflowX = 'hidden';
+            layout.style.display = 'block';
+            layout.style.flexDirection = 'column';
+        });
+        
+        const beforeAfterItems = document.querySelectorAll('.before-after > *');
+        beforeAfterItems.forEach(item => {
+            item.style.width = '100%';
+            item.style.maxWidth = `${currentWidth}px`;
+            item.style.overflowX = 'hidden';
+            item.style.display = 'block';
+            item.style.margin = '0 0 1rem 0';
+            item.style.padding = '1rem';
+            item.style.boxSizing = 'border-box';
+        });
+        
+        // Force stats layouts to fit
+        const statsLayouts = document.querySelectorAll('.usp-stats, .benefit-stats, .guarantee-details');
+        statsLayouts.forEach(layout => {
+            layout.style.width = '100%';
+            layout.style.maxWidth = `${currentWidth}px`;
+            layout.style.overflowX = 'hidden';
+            layout.style.display = 'block';
+            layout.style.flexDirection = 'column';
+        });
+        
+        const statsItems = document.querySelectorAll('.usp-stats > *, .benefit-stats > *, .guarantee-details > *');
+        statsItems.forEach(item => {
+            item.style.width = '100%';
+            item.style.maxWidth = `${currentWidth}px`;
+            item.style.overflowX = 'hidden';
+            item.style.display = 'block';
+            item.style.margin = '0 0 1rem 0';
+            item.style.padding = '1rem';
+            item.style.boxSizing = 'border-box';
+        });
+        
+        // Force specific card layouts to fit
+        const specificCards = document.querySelectorAll('.credibility-card, .pain-card, .deliverable-item, .benefit-card, .timeline-item');
+        specificCards.forEach(card => {
+            card.style.width = '100%';
+            card.style.maxWidth = `${currentWidth}px`;
+            card.style.overflowX = 'hidden';
+            card.style.display = 'block';
+            card.style.float = 'none';
+            card.style.position = 'relative';
+            card.style.transform = 'none';
+            card.style.margin = '0 0 1rem 0';
+            card.style.padding = '1rem';
+            card.style.boxSizing = 'border-box';
+        });
+        
+        // Force icon containers to fit
+        const iconContainers = document.querySelectorAll('.card-icon, .pain-icon, .deliverable-icon, .benefit-icon, .timeline-number');
+        iconContainers.forEach(icon => {
+            icon.style.width = 'auto';
+            icon.style.maxWidth = `${currentWidth}px`;
+            icon.style.overflowX = 'hidden';
+            icon.style.display = 'inline-block';
+            icon.style.position = 'relative';
+            icon.style.transform = 'none';
+            icon.style.margin = '0 0 1rem 0';
+            icon.style.padding = '0';
+        });
+        
+        // Force text content to wrap
+        const specificTextElements = document.querySelectorAll('.credibility-card h3, .pain-card h3, .deliverable-item h3, .benefit-card h3, .timeline-item h3, .credibility-card p, .pain-card p, .deliverable-item p, .benefit-card p, .timeline-item p');
+        specificTextElements.forEach(text => {
+            text.style.width = '100%';
+            text.style.maxWidth = `${currentWidth}px`;
+            text.style.overflowX = 'hidden';
+            text.style.wordWrap = 'break-word';
+            text.style.overflowWrap = 'break-word';
+            text.style.margin = '0 0 1rem 0';
+            text.style.padding = '0';
+            text.style.boxSizing = 'border-box';
+        });
+        
+        // Force button containers to fit
+        const buttonContainers = document.querySelectorAll('.hero-cta, .cta-buttons');
+        buttonContainers.forEach(container => {
+            container.style.width = '100%';
+            container.style.maxWidth = `${currentWidth}px`;
+            container.style.overflowX = 'hidden';
+            container.style.display = 'block';
+            container.style.flexDirection = 'column';
+        });
+        
+        const buttonItems = document.querySelectorAll('.hero-cta > *, .cta-buttons > *');
+        buttonItems.forEach(item => {
+            item.style.width = '100%';
+            item.style.maxWidth = `${currentWidth}px`;
+            item.style.overflowX = 'hidden';
+            item.style.display = 'block';
+            item.style.margin = '0 0 1rem 0';
+            item.style.padding = '0';
+            item.style.boxSizing = 'border-box';
+        });
+        
+        // Force all buttons to fit
+        const allButtons = document.querySelectorAll('.btn');
+        allButtons.forEach(button => {
+            button.style.width = '100%';
+            button.style.maxWidth = `${currentWidth}px`;
+            button.style.overflowX = 'hidden';
+            button.style.display = 'block';
+            button.style.textAlign = 'center';
+            button.style.margin = '0 0 1rem 0';
+            button.style.padding = '1rem';
+            button.style.boxSizing = 'border-box';
+        });
+        
+        // Force navigation to fit
+        const navMenu = document.querySelector('.nav-menu');
+        if (navMenu) {
+            navMenu.style.width = '100%';
+            navMenu.style.maxWidth = `${currentWidth}px`;
+            navMenu.style.overflowX = 'hidden';
+            navMenu.style.display = 'block';
+            navMenu.style.flexDirection = 'column';
+        }
+        
+        const navItems = document.querySelectorAll('.nav-menu > *');
+        navItems.forEach(item => {
+            item.style.width = '100%';
+            item.style.maxWidth = `${currentWidth}px`;
+            item.style.overflowX = 'hidden';
+            item.style.display = 'block';
+            item.style.margin = '0 0 1rem 0';
+            item.style.padding = '0';
+            item.style.boxSizing = 'border-box';
+        });
+        
+        // Force footer sections to fit
+        const footerLinks = document.querySelector('.footer-links');
+        if (footerLinks) {
+            footerLinks.style.width = '100%';
+            footerLinks.style.maxWidth = `${currentWidth}px`;
+            footerLinks.style.overflowX = 'hidden';
+            footerLinks.style.display = 'block';
+            footerLinks.style.flexDirection = 'column';
+        }
+        
+        const footerSections = document.querySelectorAll('.footer-links > *');
+        footerSections.forEach(section => {
+            section.style.width = '100%';
+            section.style.maxWidth = `${currentWidth}px`;
+            section.style.overflowX = 'hidden';
+            section.style.display = 'block';
+            section.style.margin = '0 0 1rem 0';
+            section.style.padding = '0';
+            section.style.boxSizing = 'border-box';
+        });
+        
+        // Force footer lists to fit
+        const footerLists = document.querySelectorAll('.footer-links ul');
+        footerLists.forEach(list => {
+            list.style.width = '100%';
+            list.style.maxWidth = `${currentWidth}px`;
+            list.style.overflowX = 'hidden';
+            list.style.display = 'block';
+            list.style.margin = '0 0 1rem 0';
+            list.style.padding = '0';
+            list.style.boxSizing = 'border-box';
+        });
+        
+        const footerListItems = document.querySelectorAll('.footer-links li');
+        footerListItems.forEach(item => {
+            item.style.width = '100%';
+            item.style.maxWidth = `${currentWidth}px`;
+            item.style.overflowX = 'hidden';
+            item.style.display = 'block';
+            item.style.margin = '0 0 0.5rem 0';
+            item.style.padding = '0';
+            item.style.boxSizing = 'border-box';
+        });
+        
+        // Force modal content to fit
+        const modalContent = document.querySelector('.modal-content');
+        if (modalContent) {
+            modalContent.style.width = '90%';
+            modalContent.style.maxWidth = '90vw';
+            modalContent.style.overflowX = 'hidden';
+            modalContent.style.margin = '2rem auto';
+            modalContent.style.padding = '1rem';
+            modalContent.style.boxSizing = 'border-box';
+        }
+        
+        const formGroups = document.querySelectorAll('.form-group');
+        formGroups.forEach(group => {
+            group.style.width = '100%';
+            group.style.maxWidth = `${currentWidth}px`;
+            group.style.overflowX = 'hidden';
+            group.style.margin = '0 0 1rem 0';
+            group.style.padding = '0';
+            group.style.boxSizing = 'border-box';
+        });
+        
+        const formInputs = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
+        formInputs.forEach(input => {
+            input.style.width = '100%';
+            input.style.maxWidth = `${currentWidth}px`;
+            input.style.overflowX = 'hidden';
+            input.style.boxSizing = 'border-box';
+            input.style.padding = '0.75rem';
         });
     }
     
