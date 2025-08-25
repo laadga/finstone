@@ -152,6 +152,67 @@ body {
         animation: none !important;
         transition: none !important;
     }
+    
+    /* NUCLEAR: Hide ANY element containing testimonial text - this will catch everything */
+    *:contains("Real Results"),
+    *:contains("David"),
+    *:contains("Sofia"),
+    *:contains("Finance Manager"),
+    *:contains("Chief Operations Officer"),
+    *:contains("$85K"),
+    *:contains("4.4x"),
+    *:contains("cash leaks"),
+    *:contains("audit"),
+    *:contains("contracts"),
+    *:contains("profit"),
+    *:contains("roadmap"),
+    *:contains("30+ hours"),
+    *:contains("transformed operations"),
+    *:contains("low-margin"),
+    *:contains("renegotiated"),
+    *:contains("annual profit"),
+    *:contains("saving"),
+    *:contains("visibility"),
+    *:contains("losing money") {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    /* NUCLEAR: Hide ANY parent container that has testimonial content */
+    body:has(*:contains("Real Results")) > *:contains("Real Results"),
+    main:has(*:contains("Real Results")) > *:contains("Real Results"),
+    section:has(*:contains("Real Results")),
+    div:has(*:contains("Real Results")),
+    article:has(*:contains("Real Results")),
+    aside:has(*:contains("Real Results")),
+    header:has(*:contains("Real Results")),
+    footer:has(*:contains("Real Results")),
+    nav:has(*:contains("Real Results")) {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
 }
 
 /* White overlay for text readability */

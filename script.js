@@ -1000,30 +1000,67 @@ function hideTestimonialsOnMobile() {
             });
         });
         
-        // Hide any elements with specific testimonial classes or IDs
-        const testimonialClasses = [
-            'testimonial', 'review', 'feedback', 'quote', 'client',
-            'carousel', 'swiper', 'slider', 'slide', 'flow',
-            'marquee', 'scroll', 'move', 'results', 'businesses'
-        ];
-        
-        testimonialClasses.forEach(className => {
-            const elements = document.querySelectorAll(`[class*="${className}"], [id*="${className}"]`);
-            elements.forEach(element => {
-                element.style.display = 'none';
-                element.style.visibility = 'hidden';
-                element.style.opacity = '0';
-                element.style.pointerEvents = 'none';
-                element.style.position = 'absolute';
-                element.style.left = '-9999px';
-                element.style.top = '-9999px';
-                element.style.width = '0';
-                element.style.height = '0';
-                element.style.overflow = 'hidden';
-                element.style.transform = 'none';
-                element.style.animation = 'none';
-                element.style.transition = 'none';
-            });
+        // NUCLEAR: Hide ANY element containing ANY testimonial-related text
+        const allTextElements = document.querySelectorAll('*');
+        allTextElements.forEach(element => {
+            if (element.textContent) {
+                const text = element.textContent.toLowerCase();
+                if (text.includes('real results') || 
+                    text.includes('david') || 
+                    text.includes('sofia') || 
+                    text.includes('finance manager') || 
+                    text.includes('chief operations officer') || 
+                    text.includes('$85k') || 
+                    text.includes('4.4x') || 
+                    text.includes('cash leaks') || 
+                    text.includes('audit') || 
+                    text.includes('contracts') || 
+                    text.includes('profit') || 
+                    text.includes('roadmap') || 
+                    text.includes('30+ hours') || 
+                    text.includes('transformed operations') || 
+                    text.includes('low-margin') || 
+                    text.includes('renegotiated') || 
+                    text.includes('annual profit') || 
+                    text.includes('saving') || 
+                    text.includes('visibility') || 
+                    text.includes('losing money')) {
+                    
+                    // Hide the element itself
+                    element.style.display = 'none';
+                    element.style.visibility = 'hidden';
+                    element.style.opacity = '0';
+                    element.style.pointerEvents = 'none';
+                    element.style.position = 'absolute';
+                    element.style.left = '-9999px';
+                    element.style.top = '-9999px';
+                    element.style.width = '0';
+                    element.style.height = '0';
+                    element.style.overflow = 'hidden';
+                    element.style.transform = 'none';
+                    element.style.animation = 'none';
+                    element.style.transition = 'none';
+                    
+                    // Also hide all parent containers up to the body
+                    let parent = element.parentElement;
+                    while (parent && parent !== document.body) {
+                        parent.style.display = 'none';
+                        parent.style.visibility = 'hidden';
+                        parent.style.opacity = '0';
+                        parent.style.pointerEvents = 'none';
+                        parent.style.position = 'absolute';
+                        parent.style.left = '-9999px';
+                        parent.style.top = '-9999px';
+                        parent.style.width = '0';
+                        parent.style.height = '0';
+                        parent.style.overflow = 'hidden';
+                        parent.style.transform = 'none';
+                        parent.style.animation = 'none';
+                        parent.style.transition = 'none';
+                        parent = parent.parentElement;
+                    }
+                }
+            }
         });
     }
 }
