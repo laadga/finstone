@@ -125,6 +125,49 @@
             element.style.wordWrap = 'break-word';
             element.style.overflowWrap = 'break-word';
         });
+        
+        // NUCLEAR: Force testimonials and grid elements to fit viewport
+        const testimonialElements = document.querySelectorAll('[class*="testimonial"], [id*="testimonial"], [class*="review"], [id*="review"]');
+        testimonialElements.forEach(element => {
+            element.style.width = '100%';
+            element.style.maxWidth = `${currentWidth}px`;
+            element.style.overflowX = 'hidden';
+            element.style.display = 'block';
+            element.style.float = 'none';
+            element.style.position = 'relative';
+        });
+        
+        // Force any grid or flex containers to single column
+        const gridElements = document.querySelectorAll('.grid, [class*="grid"], [class*="flex"]');
+        gridElements.forEach(element => {
+            element.style.display = 'block';
+            element.style.width = '100%';
+            element.style.maxWidth = `${currentWidth}px`;
+            element.style.overflowX = 'hidden';
+            element.style.flexDirection = 'column';
+            element.style.flexWrap = 'nowrap';
+        });
+        
+        // Force grid/flex items to full width
+        const gridItems = document.querySelectorAll('.grid > *, [class*="grid"] > *, [class*="flex"] > *');
+        gridItems.forEach(item => {
+            item.style.width = '100%';
+            item.style.maxWidth = `${currentWidth}px`;
+            item.style.overflowX = 'hidden';
+            item.style.flex = 'none';
+            item.style.margin = '0';
+            item.style.padding = '1rem';
+        });
+        
+        // Force any card elements to fit
+        const cardElements = document.querySelectorAll('[class*="card"], [class*="item"]');
+        cardElements.forEach(card => {
+            card.style.width = '100%';
+            card.style.maxWidth = `${currentWidth}px`;
+            card.style.overflowX = 'hidden';
+            card.style.margin = '0';
+            card.style.padding = '1rem';
+        });
     }
     
     window.addEventListener('resize', setViewportWidth);
