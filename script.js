@@ -691,6 +691,66 @@
                 element.style.bottom = 'auto';
             }
         });
+        
+        // NUCLEAR: Hide ALL testimonial/carousel sections on mobile
+        if (currentWidth <= 768) {
+            // Hide any testimonial-like elements
+            const testimonialSelectors = [
+                '[class*="testimonial"]', '[id*="testimonial"]',
+                '[class*="review"]', '[id*="review"]',
+                '[class*="carousel"]', '[id*="carousel"]',
+                '[class*="swiper"]', '[id*="swiper"]',
+                '[class*="slider"]', '[id*="slider"]',
+                '[class*="slide"]', '[id*="slide"]',
+                '[class*="flow"]', '[id*="flow"]',
+                '[class*="marquee"]', '[id*="marquee"]',
+                '[class*="scroll"]', '[id*="scroll"]',
+                '[class*="move"]', '[id*="move"]'
+            ];
+            
+            testimonialSelectors.forEach(selector => {
+                const elements = document.querySelectorAll(selector);
+                elements.forEach(element => {
+                    element.style.display = 'none';
+                    element.style.visibility = 'hidden';
+                    element.style.opacity = '0';
+                    element.style.pointerEvents = 'none';
+                    element.style.position = 'absolute';
+                    element.style.left = '-9999px';
+                    element.style.top = '-9999px';
+                    element.style.width = '0';
+                    element.style.height = '0';
+                    element.style.overflow = 'hidden';
+                    element.style.transform = 'none';
+                    element.style.animation = 'none';
+                    element.style.transition = 'none';
+                });
+            });
+            
+            // Hide any sections containing testimonials
+            const allSections = document.querySelectorAll('section, div');
+            allSections.forEach(section => {
+                const hasTestimonialContent = testimonialSelectors.some(selector => 
+                    section.querySelector(selector) !== null
+                );
+                
+                if (hasTestimonialContent) {
+                    section.style.display = 'none';
+                    section.style.visibility = 'hidden';
+                    section.style.opacity = '0';
+                    section.style.pointerEvents = 'none';
+                    section.style.position = 'absolute';
+                    section.style.left = '-9999px';
+                    section.style.top = '-9999px';
+                    section.style.width = '0';
+                    section.style.height = '0';
+                    section.style.overflow = 'hidden';
+                    section.style.transform = 'none';
+                    section.style.animation = 'none';
+                    section.style.transition = 'none';
+                }
+            });
+        }
     }
     
     window.addEventListener('resize', setViewportWidth);
