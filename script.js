@@ -168,6 +168,73 @@
             card.style.margin = '0';
             card.style.padding = '1rem';
         });
+        
+        // NUCLEAR: Force sliding testimonials and carousels to fit viewport
+        const slidingElements = document.querySelectorAll('[class*="sliding"], [class*="carousel"], [class*="swiper"], [class*="slide"], [class*="slider"]');
+        slidingElements.forEach(element => {
+            element.style.width = '100%';
+            element.style.maxWidth = `${currentWidth}px`;
+            element.style.overflowX = 'hidden';
+            element.style.display = 'block';
+            element.style.transform = 'none';
+            element.style.transition = 'none';
+            element.style.position = 'relative';
+            element.style.left = '0';
+            element.style.right = '0';
+        });
+        
+        // Force sliding/carousel items to fit
+        const slidingItems = document.querySelectorAll('[class*="sliding"] > *, [class*="carousel"] > *, [class*="swiper"] > *, [class*="slide"] > *, [class*="slider"] > *');
+        slidingItems.forEach(item => {
+            item.style.width = '100%';
+            item.style.maxWidth = `${currentWidth}px`;
+            item.style.overflowX = 'hidden';
+            item.style.display = 'block';
+            item.style.float = 'none';
+            item.style.position = 'relative';
+            item.style.transform = 'none';
+            item.style.margin = '0';
+            item.style.padding = '1rem';
+        });
+        
+        // Force testimonials containers to fit
+        const testimonialContainers = document.querySelectorAll('[class*="testimonial"], [id*="testimonial"], [class*="review"], [id*="review"]');
+        testimonialContainers.forEach(container => {
+            container.style.width = '100%';
+            container.style.maxWidth = `${currentWidth}px`;
+            container.style.overflowX = 'hidden';
+            container.style.display = 'block';
+            container.style.position = 'relative';
+            container.style.left = '0';
+            container.style.right = '0';
+            container.style.transform = 'none';
+        });
+        
+        // Force testimonials wrappers to fit
+        const testimonialWrappers = document.querySelectorAll('[class*="testimonial"] > *, [id*="testimonial"] > *, [class*="review"] > *, [id*="review"] > *');
+        testimonialWrappers.forEach(wrapper => {
+            wrapper.style.width = '100%';
+            wrapper.style.maxWidth = `${currentWidth}px`;
+            wrapper.style.overflowX = 'hidden';
+            wrapper.style.display = 'block';
+            wrapper.style.float = 'none';
+            wrapper.style.position = 'relative';
+            wrapper.style.transform = 'none';
+            wrapper.style.margin = '0';
+            wrapper.style.padding = '1rem';
+        });
+        
+        // Force any parent containers of testimonials to fit
+        const testimonialParents = document.querySelectorAll('section, div');
+        testimonialParents.forEach(parent => {
+            const hasTestimonials = parent.querySelector('[class*="testimonial"], [id*="testimonial"], [class*="review"], [id*="review"]');
+            if (hasTestimonials) {
+                parent.style.width = '100%';
+                parent.style.maxWidth = `${currentWidth}px`;
+                parent.style.overflowX = 'hidden';
+                parent.style.position = 'relative';
+            }
+        });
     }
     
     window.addEventListener('resize', setViewportWidth);
