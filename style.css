@@ -71,134 +71,17 @@ body {
         transition: none !important;
     }
     
-    /* Hide any sections containing testimonials */
-    section:has([class*="testimonial"]), 
-    section:has([id*="testimonial"]),
-    section:has([class*="review"]), 
-    section:has([id*="review"]),
-    section:has([class*="carousel"]), 
-    section:has([id*="carousel"]),
-    section:has([class*="swiper"]), 
-    section:has([id*="swiper"]),
-    section:has([class*="slider"]), 
-    section:has([id*="slider"]),
-    section:has([class*="slide"]), 
-    section:has([id*="slide"]),
-    section:has([class*="flow"]), 
-    section:has([id*="flow"]),
-    section:has([class*="marquee"]), 
-    section:has([id*="marquee"]),
-    section:has([class*="scroll"]), 
-    section:has([id*="scroll"]),
-    section:has([class*="move"]), 
-    section:has([id*="move"]) {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-        position: absolute !important;
-        left: -9999px !important;
-        top: -9999px !important;
-        width: 0 !important;
-        height: 0 !important;
-        overflow: hidden !important;
-        transform: none !important;
-        animation: none !important;
-        transition: none !important;
-    }
-    
-    /* Hide any divs containing testimonials */
-    div:has([class*="testimonial"]), 
-    div:has([id*="testimonial"]),
-    div:has([class*="review"]), 
-    div:has([id*="review"]),
-    div:has([class*="carousel"]), 
-    div:has([id*="carousel"]),
-    div:has([class*="swiper"]), 
-    div:has([id*="swiper"]),
-    div:has([class*="slider"]), 
-    div:has([id*="slider"]),
-    div:has([class*="slide"]), 
-    div:has([id*="slide"]),
-    div:has([class*="flow"]), 
-    div:has([id*="flow"]),
-    div:has([class*="marquee"]), 
-    div:has([id*="marquee"]),
-    div:has([class*="scroll"]), 
-    div:has([id*="scroll"]),
-    div:has([class*="move"]), 
-    div:has([id*="move"]) {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-        position: absolute !important;
-        left: -9999px !important;
-        top: -9999px !important;
-        width: 0 !important;
-        height: 0 !important;
-        overflow: hidden !important;
-        transform: none !important;
-        animation: none !important;
-        transition: none !important;
-    }
-    
-    /* Hide any elements with text content that mentions testimonials */
+    /* NUCLEAR: Hide specific testimonial text content on mobile */
     *:contains("Real Results from Real Businesses"),
-    *:contains("testimonial"),
-    *:contains("review"),
-    *:contains("feedback"),
-    *:contains("quote"),
-    *:contains("client") {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-        position: absolute !important;
-        left: -9999px !important;
-        top: -9999px !important;
-        width: 0 !important;
-        height: 0 !important;
-        overflow: hidden !important;
-        transform: none !important;
-        animation: none !important;
-        transition: none !important;
-    }
-    
-    /* NUCLEAR: Hide specific testimonial content by targeting text patterns */
-    h1:contains("Real Results"),
-    h2:contains("Real Results"),
-    h3:contains("Real Results"),
-    h4:contains("Real Results"),
-    h5:contains("Real Results"),
-    h6:contains("Real Results"),
-    p:contains("Real Results"),
-    div:contains("Real Results"),
-    span:contains("Real Results"),
-    section:contains("Real Results"),
-    article:contains("Real Results") {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-        position: absolute !important;
-        left: -9999px !important;
-        top: -9999px !important;
-        width: 0 !important;
-        height: 0 !important;
-        overflow: hidden !important;
-        transform: none !important;
-        animation: none !important;
-        transition: none !important;
-    }
-    
-    /* Hide any elements containing specific testimonial text */
     *:contains("David, Finance Manager"),
     *:contains("Sofia, Chief Operations Officer"),
     *:contains("$85K+ Average cash leaks recovered"),
     *:contains("4.4x Average Return"),
     *:contains("Before the audit, we had no visibility"),
-    *:contains("The audit identified 3 low-margin contracts") {
+    *:contains("The audit identified 3 low-margin contracts"),
+    *:contains("We renegotiated them and increased annual profit"),
+    *:contains("Now, we have a clear roadmap"),
+    *:contains("saving 30+ hours a month") {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
@@ -214,12 +97,47 @@ body {
         transition: none !important;
     }
     
-    /* Hide any parent containers of testimonial text */
-    div:has(*:contains("Real Results")),
+    /* NUCLEAR: Hide any section containing testimonial text */
     section:has(*:contains("Real Results")),
-    article:has(*:contains("Real Results")),
-    main:has(*:contains("Real Results")),
-    body:has(*:contains("Real Results")) {
+    div:has(*:contains("Real Results")),
+    section:has(*:contains("David, Finance Manager")),
+    div:has(*:contains("David, Finance Manager")),
+    section:has(*:contains("Sofia, Chief Operations Officer")),
+    div:has(*:contains("Sofia, Chief Operations Officer")),
+    section:has(*:contains("$85K+")),
+    div:has(*:contains("$85K+")),
+    section:has(*:contains("4.4x")),
+    div:has(*:contains("4.4x")) {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    /* NUCLEAR: Hide any element with testimonial-related text */
+    [class*="results"], [id*="results"],
+    [class*="businesses"], [id*="businesses"],
+    [class*="david"], [id*="david"],
+    [class*="sofia"], [id*="sofia"],
+    [class*="finance"], [id*="finance"],
+    [class*="operations"], [id*="operations"],
+    [class*="cash"], [id*="cash"],
+    [class*="leaks"], [id*="leaks"],
+    [class*="return"], [id*="return"],
+    [class*="audit"], [id*="audit"],
+    [class*="contracts"], [id*="contracts"],
+    [class*="profit"], [id*="profit"],
+    [class*="roadmap"], [id*="roadmap"],
+    [class*="hours"], [id*="hours"] {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
