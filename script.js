@@ -501,6 +501,196 @@
             input.style.boxSizing = 'border-box';
             input.style.padding = '0.75rem';
         });
+        
+        // NUCLEAR: Completely disable background wave animations on mobile
+        const backgroundAnimation = document.querySelector('.background-animation');
+        if (backgroundAnimation) {
+            backgroundAnimation.style.display = 'none';
+            backgroundAnimation.style.visibility = 'hidden';
+            backgroundAnimation.style.opacity = '0';
+            backgroundAnimation.style.pointerEvents = 'none';
+            backgroundAnimation.style.position = 'absolute';
+            backgroundAnimation.style.left = '-9999px';
+            backgroundAnimation.style.top = '-9999px';
+            backgroundAnimation.style.width = '0';
+            backgroundAnimation.style.height = '0';
+            backgroundAnimation.style.overflow = 'hidden';
+            backgroundAnimation.style.transform = 'none';
+            backgroundAnimation.style.animation = 'none';
+            backgroundAnimation.style.transition = 'none';
+        }
+        
+        // Disable all wave elements
+        const waves = document.querySelectorAll('.wave, .wave1, .wave2, .wave3');
+        waves.forEach(wave => {
+            wave.style.display = 'none';
+            wave.style.visibility = 'hidden';
+            wave.style.opacity = '0';
+            wave.style.pointerEvents = 'none';
+            wave.style.position = 'absolute';
+            wave.style.left = '-9999px';
+            wave.style.top = '-9999px';
+            wave.style.width = '0';
+            wave.style.height = '0';
+            wave.style.overflow = 'hidden';
+            wave.style.transform = 'none';
+            wave.style.animation = 'none';
+            wave.style.transition = 'none';
+        });
+        
+        // Force any remaining animated elements to stay in bounds
+        const animatedElements = document.querySelectorAll('[style*="animation"], [style*="transform"], [style*="transition"]');
+        animatedElements.forEach(element => {
+            element.style.animation = 'none';
+            element.style.transform = 'none';
+            element.style.transition = 'none';
+            element.style.overflowX = 'hidden';
+            element.style.maxWidth = `${currentWidth}px`;
+        });
+        
+        // Force any flowing/moving elements to stop
+        const flowingElements = document.querySelectorAll('[class*="flow"], [class*="move"], [class*="scroll"], [class*="slide"]');
+        flowingElements.forEach(element => {
+            element.style.animation = 'none';
+            element.style.transform = 'none';
+            element.style.transition = 'none';
+            element.style.overflowX = 'hidden';
+            element.style.maxWidth = `${currentWidth}px`;
+            element.style.position = 'relative';
+            element.style.left = '0';
+            element.style.right = '0';
+            element.style.top = 'auto';
+            element.style.bottom = 'auto';
+        });
+        
+        // Force any elements with translate transforms to stay in bounds
+        const translateElements = document.querySelectorAll('[style*="translate"], [style*="rotate"], [style*="scale"]');
+        translateElements.forEach(element => {
+            element.style.transform = 'none';
+            element.style.overflowX = 'hidden';
+            element.style.maxWidth = `${currentWidth}px`;
+            element.style.position = 'relative';
+            element.style.left = '0';
+            element.style.right = '0';
+            element.style.top = 'auto';
+            element.style.bottom = 'auto';
+        });
+        
+        // Force any elements with CSS animations to stop
+        const cssAnimatedElements = document.querySelectorAll('*');
+        cssAnimatedElements.forEach(element => {
+            const computedStyle = window.getComputedStyle(element);
+            if (computedStyle.animation !== 'none' || computedStyle.transform !== 'none' || computedStyle.transition !== 'none') {
+                element.style.animation = 'none';
+                element.style.transform = 'none';
+                element.style.transition = 'none';
+                element.style.overflowX = 'hidden';
+                element.style.maxWidth = `${currentWidth}px`;
+            }
+        });
+        
+        // Force any elements with keyframe animations to stop
+        const keyframeElements = document.querySelectorAll('*');
+        keyframeElements.forEach(element => {
+            element.style.animation = 'none';
+            element.style.transform = 'none';
+            element.style.transition = 'none';
+            element.style.overflowX = 'hidden';
+            element.style.maxWidth = `${currentWidth}px`;
+        });
+        
+        // NUCLEAR: Completely disable ALL CSS animations and keyframes on mobile
+        const allAnimatedElements = document.querySelectorAll('*');
+        allAnimatedElements.forEach(element => {
+            // Force stop ALL animations
+            element.style.animation = 'none';
+            element.style.animationDuration = '0s';
+            element.style.animationDelay = '0s';
+            element.style.animationIterationCount = '1';
+            element.style.animationFillMode = 'none';
+            element.style.animationPlayState = 'paused';
+            
+            // Force stop ALL transforms
+            element.style.transform = 'none';
+            element.style.transition = 'none';
+            
+            // Force overflow control
+            element.style.overflowX = 'hidden';
+            element.style.maxWidth = `${currentWidth}px`;
+            
+            // Force positioning to stay in bounds
+            const computedStyle = window.getComputedStyle(element);
+            if (computedStyle.position === 'absolute' || computedStyle.position === 'fixed') {
+                element.style.position = 'relative';
+                element.style.left = '0';
+                element.style.right = '0';
+                element.style.top = 'auto';
+                element.style.bottom = 'auto';
+            }
+        });
+        
+        // Force any elements with specific animation classes to stop
+        const animatedClasses = document.querySelectorAll('[class*="animate"], [class*="animation"], [class*="transition"], [class*="transform"], [class*="keyframes"], [class*="flow"], [class*="marquee"], [class*="scroll"], [class*="slide"], [class*="move"]');
+        animatedClasses.forEach(element => {
+            element.style.animation = 'none';
+            element.style.animationDuration = '0s';
+            element.style.animationDelay = '0s';
+            element.style.animationIterationCount = '1';
+            element.style.animationFillMode = 'none';
+            element.style.animationPlayState = 'paused';
+            element.style.transform = 'none';
+            element.style.transition = 'none';
+            element.style.overflowX = 'hidden';
+            element.style.maxWidth = `${currentWidth}px`;
+            element.style.position = 'relative';
+            element.style.left = '0';
+            element.style.right = '0';
+            element.style.top = 'auto';
+            element.style.bottom = 'auto';
+        });
+        
+        // Force any elements with inline animation styles to stop
+        const inlineAnimated = document.querySelectorAll('[style*="animation"], [style*="transform"], [style*="transition"], [style*="keyframes"], [style*="flow"], [style*="marquee"], [style*="scroll"], [style*="slide"], [style*="move"]');
+        inlineAnimated.forEach(element => {
+            element.style.animation = 'none';
+            element.style.animationDuration = '0s';
+            element.style.animationDelay = '0s';
+            element.style.animationIterationCount = '1';
+            element.style.animationFillMode = 'none';
+            element.style.animationPlayState = 'paused';
+            element.style.transform = 'none';
+            element.style.transition = 'none';
+            element.style.overflowX = 'hidden';
+            element.style.maxWidth = `${currentWidth}px`;
+            element.style.position = 'relative';
+            element.style.left = '0';
+            element.style.right = '0';
+            element.style.top = 'auto';
+            element.style.bottom = 'auto';
+        });
+        
+        // Force any elements with computed animations to stop
+        const computedAnimated = document.querySelectorAll('*');
+        computedAnimated.forEach(element => {
+            const computedStyle = window.getComputedStyle(element);
+            if (computedStyle.animation !== 'none' || computedStyle.transform !== 'none' || computedStyle.transition !== 'none') {
+                element.style.animation = 'none';
+                element.style.animationDuration = '0s';
+                element.style.animationDelay = '0s';
+                element.style.animationIterationCount = '1';
+                element.style.animationFillMode = 'none';
+                element.style.animationPlayState = 'paused';
+                element.style.transform = 'none';
+                element.style.transition = 'none';
+                element.style.overflowX = 'hidden';
+                element.style.maxWidth = `${currentWidth}px`;
+                element.style.position = 'relative';
+                element.style.left = '0';
+                element.style.right = '0';
+                element.style.top = 'auto';
+                element.style.bottom = 'auto';
+            }
+        });
     }
     
     window.addEventListener('resize', setViewportWidth);

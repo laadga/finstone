@@ -1722,6 +1722,220 @@ p {
         box-sizing: border-box !important;
         padding: 0.75rem !important;
     }
+    
+    /* NUCLEAR: Completely disable background wave animations on mobile */
+    .background-animation {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .wave, .wave1, .wave2, .wave3 {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    /* Force any remaining animated elements to stay in bounds */
+    [style*="animation"], [style*="transform"], [style*="transition"] {
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+    
+    /* Force any elements with keyframe animations to stay in bounds */
+    * {
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+    
+    /* Force any flowing/moving elements to stop */
+    [class*="flow"], [class*="move"], [class*="scroll"], [class*="slide"] {
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        bottom: auto !important;
+    }
+    
+    /* Force any elements with translate transforms to stay in bounds */
+    [style*="translate"], [style*="rotate"], [style*="scale"] {
+        transform: none !important;
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        bottom: auto !important;
+    }
+    
+    /* NUCLEAR: Completely disable ALL CSS keyframe animations on mobile */
+    @keyframes waveAnimation {
+        0%, 100% {
+            transform: none !important;
+        }
+        25% {
+            transform: none !important;
+        }
+        50% {
+            transform: none !important;
+        }
+        75% {
+            transform: none !important;
+        }
+    }
+    
+    /* Force ALL elements with any animations to stop */
+    * {
+        animation: none !important;
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+        animation-iteration-count: 1 !important;
+        animation-fill-mode: none !important;
+        animation-play-state: paused !important;
+        transform: none !important;
+        transition: none !important;
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+    
+    /* Force any elements with specific animation names to stop */
+    [style*="animation"], [class*="animate"], [class*="animation"] {
+        animation: none !important;
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+        animation-iteration-count: 1 !important;
+        animation-fill-mode: none !important;
+        animation-play-state: paused !important;
+        transform: none !important;
+        transition: none !important;
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+    
+    /* Force any elements with CSS transitions to stop */
+    [style*="transition"], [class*="transition"] {
+        transition: none !important;
+        transform: none !important;
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+    
+    /* Force any elements with CSS transforms to stop */
+    [style*="transform"], [class*="transform"] {
+        transform: none !important;
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+    
+    /* Force any elements with CSS keyframes to stop */
+    [style*="keyframes"], [class*="keyframes"] {
+        animation: none !important;
+        transform: none !important;
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+    
+    /* Force any elements with CSS flow to stop */
+    [style*="flow"], [class*="flow"] {
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        bottom: auto !important;
+    }
+    
+    /* Force any elements with CSS marquee to stop */
+    [style*="marquee"], [class*="marquee"] {
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        bottom: auto !important;
+    }
+    
+    /* Force any elements with CSS scroll to stop */
+    [style*="scroll"], [class*="scroll"] {
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        bottom: auto !important;
+    }
+    
+    /* Force any elements with CSS slide to stop */
+    [style*="slide"], [class*="slide"] {
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        bottom: auto !important;
+    }
+    
+    /* Force any elements with CSS move to stop */
+    [style*="move"], [class*="move"] {
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        bottom: auto !important;
+    }
 }
 
 
